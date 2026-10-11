@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurum - Correntes de Ouro 18k</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #faf8f5; color: #2d2d2d; line-height: 1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    
+    header { background: #1a1a1a; color: #f5f0e8; padding: 28px 0; position: sticky; top: 0; z-index: 100; }
+    header .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.8rem; font-weight: 700; letter-spacing: 2px; color: #d4a843; text-decoration: none; }
+    .logo span { color: #f5f0e8; font-weight: 400; }
+    nav a { color: #f5f0e8; text-decoration: none; margin-left: 32px; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover { color: #d4a843; }
+
+    .hero { background: linear-gradient(135deg, #1a1a1a 0%, #2d2318 100%); color: #f5f0e8; padding: 80px 0; text-align: center; }
+    .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 1px; }
+    .hero h1 span { color: #d4a843; }
+    .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
+    .btn { display: inline-block; background: #d4a843; color: #1a1a1a; padding: 14px 36px; border-radius: 4px; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.1s; }
+    .btn:hover { background: #e8c05a; transform: translateY(-1px); }
+
+    .section-title { text-align: center; margin: 64px 0 40px; }
+    .section-title h2 { font-size: 2.2rem; font-weight: 700; color: #1a1a1a; position: relative; display: inline-block; }
+    .section-title h2::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: #d4a843; border-radius: 2px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-bottom: 80px; }
+    .card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #efe8df; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+    .card-image { height: 220px; background: linear-gradient(135deg, #f5f0e8 0%, #e8dfd4 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .card-image::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(212,168,67,0.15) 0%, transparent 70%); }
+    .card-image svg { width: 140px; height: 140px; color: #d4a843; opacity: 0.6; }
+    .card-content { padding: 24px; }
+    .card-tag { display: inline-block; background: #d4a843; color: #1a1a1a; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+    .card h3 { font-size: 1.25rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+    .card-desc { color: #666; font-size: 0.9rem; margin-bottom: 16px; min-height: 40px; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid #efe8df; }
+    .price { font-size: 1.5rem; font-weight: 700; color: #1a1a1a; }
+    .price span { font-size: 0.9rem; font-weight: 400; color: #999; }
+    .btn-small { background: #1a1a1a; color: #f5f0e8; padding: 10px 20px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .btn-small:hover { background: #333; }
+
+    .features { background: #1a1a1a; color: #f5f0e8; padding: 64px 0; margin-top: 40px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; text-align: center; }
+    .feature-icon { width: 56px; height: 56px; margin: 0 auto 16px; color: #d4a843; }
+    .feature h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .feature p { font-size: 0.9rem; opacity: 0.7; }
+
+    footer { background: #111; color: #888; padding: 40px 0 20px; font-size: 0.9rem; }
+    footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+    footer h4 { color: #d4a843; margin-bottom: 16px; font-size: 1rem; }
+    footer a { color: #888; text-decoration: none; display: block; margin-bottom: 8px; transition: color 0.2s; }
+    footer a:hover { color: #d4a843; }
+    .copyright { text-align: center; padding-top: 20px; border-top: 1px solid #333; }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+      header .container { flex-direction: column; gap: 16px; }
+      nav a { margin: 0 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="#" class="logo">AURUM<span>.</span></a>
+      <nav>
+        <a href="#colecao">Coleção</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Correntes de <span>Ouro 18k</span></h1>
+      <p>Joias atemporais com certificado de autenticidade, garantia vitalícia e entrega segura para todo o Brasil.</p>
+      <a href="#colecao" class="btn">Ver Coleção</a>
+    </div>
+  </section>
+
+  <section id="colecao">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nossos Modelos</h2>
+      </div>
+      
+      <div class="grid">
+        <!-- Card 1: Veneziana -->
+        <article class="card">
+          <div class="card-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gold1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#d4a843"/>
+                  <stop offset="50%" stop-color="#f5e6a3"/>
+                  <stop offset="100%" stop-color="#b8860b"/>
+                </linearGradient>
+              </defs>
+              <g stroke="url(#gold1)" stroke-width="3" fill="none">
+                <path d="M50 100 Q100 60 150 100 Q100 140 50 100" stroke-linecap="round"/>
+                <path d="M50 100 Q100 60 150 100 Q100 140 50 100" stroke-linecap="round" transform="translate(0, -8)"/>
+                <path d="M50 100 Q100 60 150 100 Q100 140 50 100" stroke-linecap="round" transform="translate(0, 8)"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Veneziana</span>
+            <h3>Corrente Veneziana Clássica</h3>
+            <p class="card-desc">Elos quadrados delicados e uniformes. Design atemporal, ideal para pingentes ou uso sozinha. Acabamento polido espelhado.</p>
+            <div class="card-footer">
+              <span class="price">R$ 2.890<span>/ 45cm • 4.2g</span></span>
+              <a href="#" class="btn-small">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Singapura -->
+        <article class="card">
+          <div class="card-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gold2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#d4a843"/>
+                  <stop offset="50%" stop-color="#f5e6a3"/>
+                  <stop offset="100%" stop-color="#b8860b"/>
+                </linearGradient>
+              </defs>
+              <g stroke="url(#gold2)" stroke-width="2.5" fill="none">
+                <path d="M30 100 Q70 50 110 100 Q150 150 170 100" stroke-linecap="round" opacity="0.8"/>
+                <path d="M30 100 Q70 150 110 100 Q150 50 170 100" stroke-linecap="round" opacity="0.8"/>
+                <ellipse cx="100" cy="100" rx="35" ry="20" stroke-width="3"/>
+                <ellipse cx="100" cy="100" rx="28" ry="15" stroke-width="2"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Singapura</span>
+            <h3>Corrente Singapura Torcida</h3>
+            <p class="card-desc">Elos torcidos que criam efeito espiral único. Brilho intenso em todas as direções. Visual delicado com presença marcante.</p>
+            <div class="card-footer">
+              <span class="price">R$ 3.450<span>/ 50cm • 5.8g</span></span>
+              <a href="#" class="btn-small">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Cartier -->
+        <article class="card">
+          <div class="card-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gold3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#d4a843"/>
+                  <stop offset="50%" stop-color="#f5e6a3"/>
+                  <stop offset="100%" stop-color="#b8860b"/>
+                </linearGradient>
+              </defs>
+              <g stroke="url(#gold3)" stroke-width="5" fill="none" stroke-linecap="round">
+                <rect x="40" y="70" width="120" height="60" rx="8"/>
+                <rect x="40" y="70" width="120" height="60" rx="8" transform="translate(0, 15)"/>
+                <rect x="40" y="70" width="120" height="60" rx="8" transform="translate(0, 30)"/>
+                <rect x="40" y="70" width="120" height="60" rx="8" transform="translate(0, 45)"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Cartier</span>
+            <h3>Corrente Cartier / Grumet</h3>
+            <p class="card-desc">Elos retangulares achatados e interligados. Estilo robusto e masculino. Peso substancial, presença imponente no peito.</p>
+            <div class="card-footer">
+              <span class="price">R$ 5.200<span>/ 60cm • 12.5g</span></span>
+              <a href="#" class="btn-small">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: Corda -->
+        <article class="card">
+          <div class="card-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gold4" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#d4a843"/>
+                  <stop offset="50%" stop-color="#f5e6a3"/>
+                  <stop offset="100%" stop-color="#b8860b"/>
+                </linearGradient>
+              </defs>
+              <g stroke="url(#gold4)" stroke-width="3" fill="none" stroke-linecap="round">
+                <path d="M30 100 Q70 40 110 100 Q150 160 170 100" opacity="0.7"/>
+                <path d="M30 100 Q70 160 110 100 Q150 40 170 100" opacity="0.7"/>
+                <path d="M40 90 Q80 50 120 90 Q160 130 160 90" stroke-width="4"/>
+                <path d="M40 110 Q80 150 120 110 Q160 70 160 110" stroke-width="4"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Corda</span>
+            <h3>Corrente Corda Torcida</h3>
+            <p class="card-desc">Múltiplos fios trançados simulando corda. Textura rica que reflete luz em 360°. Clássica, versátil e muito resistente.</p>
+            <div class="card-footer">
+              <span class="price">R$ 4.100<span>/ 55cm • 8.3g</span></span>
+              <a href="#" class="btn-small">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5: Elo Português -->
+        <article class="card">
+          <div class="card-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gold5" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#d4a843"/>
+                  <stop offset="50%" stop-color="#f5e6a3"/>
+                  <stop offset="100%" stop-color="#b8860b"/>
+                </linearGradient>
+              </defs>
+              <g stroke="url(#gold5)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M50 80 Q100 50 150 80 Q180 110 150 140 Q100 170 50 140 Q20 110 50 80"/>
+                <path d="M50 115 Q100 90 150 115 Q175 138 150 160 Q100 185 50 160 Q25 138 50 115"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Português</span>
+            <h3>Corrente Elo Português</h3>
+            <p class="card-desc">Elos ovais alongados e interligados. Tradicional joalheria portuguesa. Visual alongado que valoriza o colo. Acabamento diamantado.</p>
+            <div class="card-footer">
+              <span class="price">R$ 3.780<span>/ 50cm • 6.7g</span></span>
+              <a href="#" class="btn-small">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6: Pipoca -->
+        <article class="card">
+          <div class="card-image">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="gold6" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#d4a843"/>
+                  <stop offset="50%" stop-color="#f5e6a3"/>
+                  <stop offset="100%" stop-color="#b8860b"/>
+                </linearGradient>
+              </defs>
+              <g stroke="url(#gold6)" stroke-width="2" fill="url(#gold6)">
+                <circle cx="60" cy="80" r="18"/>
+                <circle cx="140" cy="80" r="18"/>
+                <circle cx="60" cy="120" r="18"/>
+                <circle cx="140" cy="120" r="18"/>
+                <circle cx="100" cy="100" r="18"/>
+                <circle cx="30" cy="100" r="14"/>
+                <circle cx="170" cy="100" r="14"/>
+                <circle cx="100" cy="50" r="14"/>
+                <circle cx="100" cy="150" r="14"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-content">
+            <span class="card-tag">Pipoca</span>
+            <h3>Corrente Pipoca / Esferas</h3>
+            <p class="card-desc">Esferas ocas polidas interligadas. Leve, confortável e com movimento fluido. Estilo jovem e moderno, ótima para dia a dia.</p>
+            <div class="card-footer">
+              <span class="price">R$ 2.350<span>/ 45cm • 3.1g</span></span>
+              <a href="#" class="btn-small">Comprar</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <h3>Ouro 18k Certificado</h3>
+          <p>Todas as peças com certificado de autenticidade e teor 750 (18 quilates).</p>
+        </div>
+        <div class="feature">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12V7H5v5"/>
+            <path d="M16 19h6"/>
+            <path d="M19 16v6"/>
+            <rect x="3" y="12" width="18" height="10" rx="2"/>
+          </svg>
+          <h3>Garantia Vitalícia</h3>
+          <p>Garantia permanente contra defeitos de fabricação e teor do ouro.</p>
+        </div>
+        <div class="feature">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <h3>Entrega Segura</h3>
+          <p>Envio segurado, rastreado e com embalagem discreta para todo Brasil.</p>
+        </div>
+        <div class="feature">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+          <h3>Troca Fácil</h3>
+          <p>Primeira troca grátis em até 30 dias. Ajuste de tamanho sem custo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contato">
+    <div class="container">
+      <div>
+        <h4>AURUM.</h4>
+        <p style="opacity: 0.7; max-width: 280px;">Joias em ouro 18k com design atemporal e qualidade certificada. Desde 2024.</p>
+      </div>
+      <div>
+        <h4>Coleção</h4>
+        <a href="#">Veneziana</a>
+        <a href="#">Singapura</a>
+        <a href="#">Cartier</a>
+        <a href="#">Corda</a>
+        <a href="#">Português</a>
+        <a href="#">Pipoca</a>
+      </div>
+      <div>
+        <h4>Suporte</h4>
+        <a href="#">Certificados</a>
+        <a href="#">Garantia</a>
+        <a href="#">Trocas e Devoluções</a>
+        <a href="#">Guia de Tamanhos</a>
+        <a href="#">Cuidados com a Joia</a>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <a href="tel:+5511999999999">(11) 99999-9999</a>
+        <a href="mailto:contato@aurumjoias.com.br">contato@aurumjoias.com.br</a>
+        <a href="#">WhatsApp</a>
+        <p style="margin-top: 8px; opacity: 0.7;">Seg–Sex: 9h–18h | Sáb: 9h–13h</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 AURUM Joias. Todos os direitos reservados. | CNPJ: 00.000.000/0001-00</p>
+    </div>
+  </footer>
+</body>
+</html>
